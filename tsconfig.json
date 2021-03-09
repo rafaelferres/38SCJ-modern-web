@@ -17,7 +17,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "types": ["node", "jest"],
+    "types": ["node", "jest", "@testing-library/jest-dom"],
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "alwaysStrict" : true,

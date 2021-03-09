@@ -3,4 +3,9 @@ module.exports = {
     moduleNameMapper: {
       '\\.(scss|sass|css)$': 'identity-obj-proxy',
     },
+    bail: 1,
+    clearMocks: true,
+    collectCoverage: true,
+    collectCoverageFrom: ['pages/**/*.ts[x]'],
+    coverageReporters: ['lcov', 'text'],
   };

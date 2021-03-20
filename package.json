@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "autoprefixer": "^7",
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.12.1",
     "next": "10.0.8",
     "postcss": "^7",
     "postcss-flexbugs-fixes": "^4",
@@ -22,7 +24,9 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
+    "@types/dotenv": "^8.2.0",
     "@types/jest": "^26.0.20",
+    "@types/mongoose": "^5.10.3",
     "@types/node": "^14.14.33",
     "@types/react": "^17.0.3",
     "@typescript-eslint/eslint-plugin": "^4.17.0",

@@ -1,13 +1,13 @@
 import mongoose, { Schema, model, Document } from 'mongoose'
 
 export interface UsuariosInterface extends Document {
-  nome: string
+  usuario: string
   email: string
   senha: string
 }
 
 const UsuariosSchema = new Schema({
-  nome: {
+  usuario: {
     type: String,
     require: true,
   },

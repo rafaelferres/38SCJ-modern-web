@@ -1,13 +1,39 @@
 import React from 'react'
 import Link from 'next/link'
+import Router from 'next/router'
 
 export default function Home(): React.ReactElement {
-  const [usuario, setUsuario] = React.useState('')
+  const [email, setEmail] = React.useState('')
   const [senha, setSenha] = React.useState('')
 
   const onSubmit = (e) => {
     e.preventDefault()
-    console.log(usuario, senha)
+
+    fetch('/api/v1/login', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        senha,
+      }),
+    })
+      .then((res) => {
+        res.json().then((json) => {
+          if (json.error) {
+            alert(json.message)
+          } else {
+            alert('Usuário logado com sucesso')
+            localStorage.setItem('USER_INFO', JSON.stringify(json))
+            Router.push('/listaUsuarios')
+          }
+        })
+      })
+      .catch((error) => {
+        console.log(error.body)
+      })
   }
 
   return (
@@ -17,14 +43,14 @@ export default function Home(): React.ReactElement {
         <form onSubmit={onSubmit}>
           <div>
             <label className="block mb-2 text-black" htmlFor="username">
-              Usuário
+              Email
             </label>
             <input
               className="w-full p-2 mb-6 text-black outline-none rounded focus:bg-gray-300"
-              type="text"
+              type="email"
               name="username"
-              value={usuario}
-              onChange={(e) => setUsuario(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div>
@@ -49,9 +75,6 @@ export default function Home(): React.ReactElement {
           </div>
         </form>
         <footer>
-          <span className="text-black hover:text-pink-700 text-sm float-left cursor-pointer">
-            <Link href="/esqueciSenha">Esqueci minha senha</Link>
-          </span>
           <span className="text-black hover:text-pink-700 text-sm float-right">
             <Link href="/cadastroUsuario">Criar conta</Link>
           </span>

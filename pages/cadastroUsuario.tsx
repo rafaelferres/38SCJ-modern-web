@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks */
+import Router from 'next/router'
 import React from 'react'
 
 export default function cadastroUsuario(): React.ReactElement {
@@ -7,9 +7,34 @@ export default function cadastroUsuario(): React.ReactElement {
   const [senha, setSenha] = React.useState('')
   const [senha2, setSenha2] = React.useState('')
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: React.FormEvent): void => {
     e.preventDefault()
-    console.log(usuario, email, senha, senha2)
+
+    fetch('/api/v1/usuario', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        usuario,
+        email,
+        senha,
+      }),
+    })
+      .then((res) => {
+        res.json().then((json) => {
+          if (json.error) {
+            alert(json.message)
+          } else {
+            alert('Usuário cadastrado com sucesso!')
+            Router.push('/')
+          }
+        })
+      })
+      .catch((error) => {
+        console.log(error.body)
+      })
   }
 
   return (

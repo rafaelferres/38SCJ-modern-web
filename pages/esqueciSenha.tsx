@@ -1,13 +1,13 @@
 import React from 'react'
-import Link from 'next/link'
 
-export default function Home(): React.ReactElement {
+export default function esqueciSenha(): React.ReactElement {
   const [usuario, setUsuario] = React.useState('')
   const [senha, setSenha] = React.useState('')
+  const [senha2, setSenha2] = React.useState('')
 
   const onSubmit = (e) => {
     e.preventDefault()
-    console.log(usuario, senha)
+    console.log(usuario, senha, senha2)
   }
 
   return (
@@ -40,22 +40,26 @@ export default function Home(): React.ReactElement {
             />
           </div>
           <div>
+            <label className="block mb-2 text-black" htmlFor="password2">
+              Confirmar Senha
+            </label>
+            <input
+              className="w-full p-2 mb-6 text-black outline-none rounded focus:bg-gray-300"
+              type="password"
+              name="password"
+              value={senha2}
+              onChange={(e) => setSenha2(e.target.value)}
+            />
+          </div>
+          <div>
             <button
               className="w-full bg-indigo-700 hover:bg-pink-700 text-white font-bold py-2 px-4 mb-6 rounded cursor-pointer"
               type="submit"
             >
-              Logar
+              Salvar Senha
             </button>
           </div>
         </form>
-        <footer>
-          <span className="text-black hover:text-pink-700 text-sm float-left cursor-pointer">
-            <Link href="/esqueciSenha">Esqueci minha senha</Link>
-          </span>
-          <span className="text-black hover:text-pink-700 text-sm float-right">
-            <Link href="/cadastroUsuario">Criar conta</Link>
-          </span>
-        </footer>
       </div>
     </div>
   )

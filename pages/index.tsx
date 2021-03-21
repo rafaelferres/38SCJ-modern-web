@@ -6,7 +6,7 @@ export default function Home(): React.ReactElement {
   const [email, setEmail] = React.useState('')
   const [senha, setSenha] = React.useState('')
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
     fetch('/api/v1/login', {

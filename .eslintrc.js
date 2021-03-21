@@ -40,6 +40,7 @@ module.exports = {
         'jsx-a11y/anchor-is-valid': 'off',
         'react-hooks/rules-of-hooks': 'off',
         '@typescript-eslint/no-unused-vars': ['error'],
+        "noImplicitAny": true,
         '@typescript-eslint/explicit-function-return-type': [
           'warn',
           {
